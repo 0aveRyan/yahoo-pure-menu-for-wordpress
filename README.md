@@ -9,13 +9,13 @@ This walker is currently in development, and is missing key functionality like l
 
 ## Paste into theme's functions.php
 
-Snippet found in ```walker_class.php``` should be dumped into your theme's ```functions.php``` file!
+Snippet found in ```walker_class.php``` should be pasted into your theme's ```functions.php``` file!
 
-## Boilerplate wp_nav_menu template tag
+## Boilerplate wp_nav_menu() template tag
 
-Paste snippet found in ```example_template_tag.php``` to output menu wrapped in ```<ul>```. 
+Paste snippet found in ```example_template_tag.php``` to output menu wrapped in ```<ul>``` with proper Pure selector. 
 
-Strips the default div container, allowing you to still define an anchor with a ```.pure-menu-heading``` class (see below). 
+Strips the default ```<div>``` container, allowing you to still define an anchor with a ```.pure-menu-heading``` class (see below). 
 
 You might need to define other attributes found [here in WordPress Codex](http://codex.wordpress.org/Function_Reference/wp_nav_menu). 
 *You must define either a $menu or $theme_location.*
