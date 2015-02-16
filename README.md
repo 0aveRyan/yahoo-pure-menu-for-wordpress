@@ -1,43 +1,24 @@
-# WordPress Nav Walker for Yahoo Pure Menu
-With Yahoo [Pure](https://github.com/yahoo/pure) v0.6.0, a rewritten Menu component solves many headaches (props [@jamesalley](https://github.com/jamesalley))!
+# Yahoo! Pure Menu for WordPress
+[Yahoo! Pure](https://github.com/yahoo/pure) has a completely rewritten menu component for v0.6.0 (props [@jamesalley](https://github.com/jamesalley))!
 
-However, this menu relies on custom classes defined on both line items and anchor links, something the default ```wp_nav_menu()``` Walker doesn't do.
+However, the new menu relies on selectors on both line items and anchor links, something the default ```wp_nav_menu()``` Walker doesn't do.
 
-This is a simple walker class to add to your functions.php and snippet to use for instances of ```wp_nav_menu()```. This doesn't spit out the default bloat of classes WordPress usually adds to line items, but that's a feature in my book. Modify and extend as needed.
+This is a simple walker class to add to your functions.php and snippet to use for instances of ```wp_nav_menu()```.
+
+This walker is currently in development, and is missing key functionality like listening to target and link attributes defined in WordPress Dashboard.
 
 ## Paste into theme's functions.php
 
-```php
-class Simple_Pure_Walker extends Walker {
-  public function walk( $elements ) {
-	$list = array ();
-	foreach ( $elements as $item ) {
-		if ( $item->current )
-			$list[] = "<li class='pure-menu-item pure-menu-selected'><a href='$item->url' class='pure-menu-link'>$item->title</a>";
-		else
-			$list[] = "<li class='pure-menu-item'><a href='$item->url' class='pure-menu-link'>$item->title</a>";
-    }
-  return join( "\n", $list );
-  }
-}
-```
+Snippet found in ```walker_class.php``` should be dumped into your theme's ```functions.php``` file!
 
+## Boilerplate wp_nav_menu template tag
 
-## Boilerplate wp_nav_menu function
+Paste snippet found in ```example_template_tag.php``` to output menu wrapped in ```<ul>```. 
 
-Paste this snippet to output menu wrapped in ```<ul>```. Strips the default div container, allowing you to still define an anchor with a .pure-menu-heading class (see below). You might need to define other attributes found [here in WordPress Codex](http://codex.wordpress.org/Function_Reference/wp_nav_menu). *You must define either a $menu or $theme_location.*
+Strips the default div container, allowing you to still define an anchor with a ```.pure-menu-heading``` class (see below). 
 
-```php
-<?php
-$args = array(
-    'container'       => 'none',
-	'menu_class'      => 'pure-menu-list',
-	'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-	'depth'           => 0,
-	'walker'          => 'Simple_Pure_Walker'
-);
-wp_nav_menu( $args ); ?>
-```
+You might need to define other attributes found [here in WordPress Codex](http://codex.wordpress.org/Function_Reference/wp_nav_menu). 
+*You must define either a $menu or $theme_location.*
 
 ### Menu Tip
 
