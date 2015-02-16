@@ -12,8 +12,8 @@ class Simple_Pure_Walker extends Walker {
 			$list[] = "<li class='pure-menu-item pure-menu-selected'><a href='$item->url' class='$printclasses pure-menu-link'>$item->title</a>";
 		else
 			$list[] = "<li class='pure-menu-item'><a href='$item->url' class='$printclasses pure-menu-link'>$item->title</a>";
-    }
-  return join( "\n", $list );
+    	}
+   return join( "\n", $list );
   }
 } 
 ?>
